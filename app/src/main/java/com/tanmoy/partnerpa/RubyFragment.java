@@ -30,8 +30,26 @@ import java.util.Map;
 import static android.R.id.message;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class RubyFragment extends Fragment {
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+public class RubyFragment extends Fragment implements OnMapReadyCallback{
+    MapView mMapView;
+    private GoogleMap googleMap;
+
     private static final String URL = "https://shayongupta.000webhostapp.com/partnerapp/ruby.php";
     private StringRequest request;
     String lat = "";
@@ -39,7 +57,9 @@ public class RubyFragment extends Fragment {
     String no_slots = "";
     String no_empty = "";
     Button button;
-    private RequestQueue requestQueue;
+    double latitude;
+    double longitude;
+
 
 
     public RubyFragment() {
@@ -62,6 +82,45 @@ public class RubyFragment extends Fragment {
         final TextView textTotal = (TextView) rootView.findViewById(R.id.total);
         final TextView textEmpty = (TextView) rootView.findViewById(R.id.empty);
         final RequestQueue rq = Volley.newRequestQueue(getActivity().getApplicationContext());
+
+
+        mMapView = (MapView) rootView.findViewById(R.id.mapView);
+        mMapView.onCreate(savedInstanceState);
+
+
+        mMapView.onResume();// needed to get the map to display immediately
+
+        try {
+            MapsInitializer.initialize(getActivity().getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //googleMap = mMapView.getMap();
+
+
+
+        /*// latitude and longitude
+        double latitude = 88.385044;
+        double longitude = 22.486671;
+
+        // create marker
+        MarkerOptions marker = new MarkerOptions().position(
+                new LatLng(latitude, longitude)).title("Hello Maps");
+
+        // Changing marker icon
+        marker.icon(BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
+
+        // adding marker
+
+        googleMap.addMarker(marker);
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(88.385044, 22.486671)).zoom(12).build();
+        googleMap.animateCamera(CameraUpdateFactory
+                .newCameraPosition(cameraPosition));
+        */
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -77,12 +136,17 @@ public class RubyFragment extends Fragment {
                                 no_slots = jsonObject.getString("total");
                                 no_empty = jsonObject.getString("empty");
 
+
                                 textLat.setText("Latitude:\n"+lat);
                                 textLong.setText("Longitude:\n"+lon);
                                 textTotal.setText("Total Slots:\n"+no_slots);
                                 textEmpty.setText("Empty Slots:\n"+no_empty);
-                                //Toast.makeText(getActivity().getApplicationContext(),jsonObject.getString("lat"),Toast.LENGTH_SHORT).show();
 
+                                RubyFragment obj=new RubyFragment();
+                                obj.setVariables(Double.parseDouble(lat), Double.parseDouble(lon));
+                                mMapView.getMapAsync(obj);
+
+                                //Toast.makeText(getActivity().getApplicationContext(),jsonObject.getString("lat"),Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 Toast.makeText(getActivity().getApplicationContext(),"Error! Cannot fetch data", Toast.LENGTH_SHORT).show();
@@ -111,6 +175,47 @@ public class RubyFragment extends Fragment {
         return rootView;
     }
 
+
+    public void setVariables(double lat, double lon){
+        latitude=lat;
+        longitude=lon;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap map) {
+//DO WHATEVER YOU WANT WITH GOOGLEMAP
+        LatLng location = new LatLng(latitude,longitude);
+        map.addMarker(new MarkerOptions().position(location).title("Marker in Parking Lot"));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(location,17));
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        map.setTrafficEnabled(true);
+        map.setIndoorEnabled(true);
+        map.setBuildingsEnabled(true);
+        map.getUiSettings().setZoomControlsEnabled(true);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        mMapView.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mMapView.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mMapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mMapView.onLowMemory();
+    }
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
