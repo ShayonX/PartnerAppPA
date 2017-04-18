@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Partner Parking Allocation</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string name="nav_item_home">Home</string>
+    <string name="nav_item_ruby">Ruby General Hospital</string>
+    <string name="nav_item_sc">Science City</string>
+    <string name="nav_item_gariahat">Gariahat</string>
+    <string name="nav_item_tal">Tal Bagan</string>
+    <string name="nav_parkcircus">Park Circus</string>
+
+    <!-- navigation drawer item labels  -->
+    <string-array name="nav_drawer_labels">
+        <item>@string/nav_item_home</item>
+        <item>@string/nav_item_ruby</item>
+        <item>@string/nav_item_sc</item>
+        <item>@string/nav_item_gariahat</item>
+        <item>@string/nav_item_tal</item>
+        <item>@string/nav_parkcircus</item>
+    </string-array>
+
+    <string name="title_ruby">Ruby General Hospital</string>
+    <string name="title_sc">Science City</string>
+    <string name="title_gariahat">Gariahat</string>
+    <string name="title_tal">Tal Bagan</string>
+    <string name="title_parkcircus">Park Circus</string>
+    <string name="title_home">Home</string>
+</resources>
