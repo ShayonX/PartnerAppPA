@@ -96,30 +96,7 @@ public class RubyFragment extends Fragment implements OnMapReadyCallback{
             e.printStackTrace();
         }
 
-        //googleMap = mMapView.getMap();
 
-
-
-        /*// latitude and longitude
-        double latitude = 88.385044;
-        double longitude = 22.486671;
-
-        // create marker
-        MarkerOptions marker = new MarkerOptions().position(
-                new LatLng(latitude, longitude)).title("Hello Maps");
-
-        // Changing marker icon
-        marker.icon(BitmapDescriptorFactory
-                .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-
-        // adding marker
-
-        googleMap.addMarker(marker);
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(88.385044, 22.486671)).zoom(12).build();
-        googleMap.animateCamera(CameraUpdateFactory
-                .newCameraPosition(cameraPosition));
-        */
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
