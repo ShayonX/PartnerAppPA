@@ -29,7 +29,19 @@ android:background="#000000"
         android:id="@+id/container_body"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:fontFamily="sans-serif"
+            android:text="Welcome to the Partner App"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="80px"
+            android:layout_marginTop="200dp"/>
+    </FrameLayout>
 
 
 </LinearLayout>
