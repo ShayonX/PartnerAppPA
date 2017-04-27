@@ -67,6 +67,7 @@ public class GariahatFragment extends Fragment implements OnMapReadyCallback{
     Button button;
     double latitude;
     double longitude;
+    Button gariahat_btn;
 
 
 
@@ -90,6 +91,20 @@ public class GariahatFragment extends Fragment implements OnMapReadyCallback{
         final TextView textTotal = (TextView) rootView.findViewById(R.id.total);
         final TextView textEmpty = (TextView) rootView.findViewById(R.id.empty);
         final RequestQueue rq = Volley.newRequestQueue(getActivity().getApplicationContext());
+
+        gariahat_btn = (Button)rootView.findViewById(R.id.gariahat_btn);
+
+        gariahat_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), GariahatParkingLot.class);
+                getActivity().startActivity(myIntent);
+
+
+
+
+            }
+        });
+
 
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);

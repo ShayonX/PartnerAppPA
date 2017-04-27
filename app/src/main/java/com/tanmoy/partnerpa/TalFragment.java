@@ -59,6 +59,7 @@ public class TalFragment extends Fragment implements OnMapReadyCallback{
     Button button;
     double latitude;
     double longitude;
+    Button tal;
 
 
 
@@ -82,6 +83,19 @@ public class TalFragment extends Fragment implements OnMapReadyCallback{
         final TextView textTotal = (TextView) rootView.findViewById(R.id.total);
         final TextView textEmpty = (TextView) rootView.findViewById(R.id.empty);
         final RequestQueue rq = Volley.newRequestQueue(getActivity().getApplicationContext());
+
+        tal = (Button)rootView.findViewById(R.id.button);
+
+               tal.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), KasbaParkingLot.class);
+                getActivity().startActivity(myIntent);
+
+
+
+
+            }
+        });
 
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);

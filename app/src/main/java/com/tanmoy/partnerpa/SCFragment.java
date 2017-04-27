@@ -59,6 +59,7 @@ public class SCFragment extends Fragment implements OnMapReadyCallback{
     Button button;
     double latitude;
     double longitude;
+    Button sciencecity_btn;
 
 
 
@@ -82,6 +83,19 @@ public class SCFragment extends Fragment implements OnMapReadyCallback{
         final TextView textTotal = (TextView) rootView.findViewById(R.id.total);
         final TextView textEmpty = (TextView) rootView.findViewById(R.id.empty);
         final RequestQueue rq = Volley.newRequestQueue(getActivity().getApplicationContext());
+
+        sciencecity_btn = (Button)rootView.findViewById(R.id.science_btn);
+
+        sciencecity_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), ScienceCityParkingLot.class);
+                getActivity().startActivity(myIntent);
+
+
+
+
+            }
+        });
 
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);

@@ -59,6 +59,7 @@ public class PCFragment extends Fragment implements OnMapReadyCallback{
     Button button;
     double latitude;
     double longitude;
+    Button parkcircus_btn;
 
 
 
@@ -82,6 +83,19 @@ public class PCFragment extends Fragment implements OnMapReadyCallback{
         final TextView textTotal = (TextView) rootView.findViewById(R.id.total);
         final TextView textEmpty = (TextView) rootView.findViewById(R.id.empty);
         final RequestQueue rq = Volley.newRequestQueue(getActivity().getApplicationContext());
+
+        parkcircus_btn = (Button)rootView.findViewById(R.id.parkcircus_btn);
+
+        parkcircus_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), ParkCircusParkingLot.class);
+                getActivity().startActivity(myIntent);
+
+
+
+
+            }
+        });
 
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);

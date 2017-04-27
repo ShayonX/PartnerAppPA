@@ -26,7 +26,11 @@
             android:value="AIzaSyC9sFFMq4gt0XnNX50x7EJgN128nzdeVGw" />
 
         <activity android:name=".RubyParkingLot" />
-        <activity android:name=".BillParking"></activity>
+        <activity android:name=".BillParking" />
+        <activity android:name=".KasbaParkingLot" />
+        <activity android:name=".ScienceCityParkingLot" />
+        <activity android:name=".GariahatParkingLot" />
+        <activity android:name=".ParkCircusParkingLot"></activity>
     </application>
 
 </manifest>
