@@ -59,6 +59,7 @@ public class RubyFragment extends Fragment implements OnMapReadyCallback{
     Button button;
     double latitude;
     double longitude;
+    Button ruby_btn;
 
 
 
@@ -82,6 +83,18 @@ public class RubyFragment extends Fragment implements OnMapReadyCallback{
         final TextView textTotal = (TextView) rootView.findViewById(R.id.total);
         final TextView textEmpty = (TextView) rootView.findViewById(R.id.empty);
         final RequestQueue rq = Volley.newRequestQueue(getActivity().getApplicationContext());
+        ruby_btn = (Button) rootView.findViewById(R.id.ruby_btn);
+
+        ruby_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), RubyParkingLot.class);
+                getActivity().startActivity(myIntent);
+
+
+
+
+            }
+        });
 
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);
