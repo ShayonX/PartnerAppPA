@@ -139,8 +139,8 @@ public class GariahatFragment extends Fragment implements OnMapReadyCallback{
 
                                 textLat.setText("Latitude:\n"+lat);
                                 textLong.setText("Longitude:\n"+lon);
-                                textTotal.setText("Total Slots:\n"+no_slots);
-                                textEmpty.setText("Empty Slots:\n"+no_empty);
+                                //textTotal.setText("Total Slots:\n"+no_slots);
+                                //textEmpty.setText("Empty Slots:\n"+no_empty);
 
                                 RubyFragment obj=new RubyFragment();
                                 obj.setVariables(Double.parseDouble(lat), Double.parseDouble(lon));
